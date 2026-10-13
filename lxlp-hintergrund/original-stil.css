@@ -1,0 +1,108 @@
+/* Lab X - Learning Playground */
+:root { --nacht:#1b2433; --text:#232b3a; --leise:#5f6878; --gold:#e8a526; --gold-d:#b87a0c; --rot:#c62828; --papier:#fbf8f2; --linie:#e6dfd0; --weiss:#fff; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; color:var(--text); background:var(--papier); line-height:1.65; -webkit-font-smoothing:antialiased; }
+a { color:var(--rot); }
+.wrap { max-width:1120px; margin:0 auto; padding:0 24px; }
+
+/* Kopf */
+.kopf { position:absolute; top:0; left:0; right:0; z-index:5; }
+.kopf .wrap { display:flex; align-items:center; justify-content:space-between; height:72px; }
+.marke { font-weight:700; letter-spacing:.3px; color:var(--nacht); text-decoration:none; white-space:nowrap; font-size:17px; }
+.marke b { color:var(--rot); font-weight:800; }
+.kopf nav a { color:var(--nacht); text-decoration:none; font-size:14.5px; margin-left:26px; font-weight:500; opacity:.85; }
+.kopf nav a:hover { opacity:1; color:var(--rot); }
+
+/* Hero: warmes Goldlicht, Netz aus Knoten, Funkmasten */
+.hero { position:relative; min-height:min(86vh,720px); display:flex; align-items:center; overflow:hidden; color:var(--nacht);
+  background:
+    radial-gradient(60% 70% at 72% 28%, rgba(255,255,255,.58), rgba(255,255,255,0) 60%),
+    radial-gradient(50% 60% at 18% 90%, rgba(255,214,140,.9), rgba(255,214,140,0) 70%),
+    linear-gradient(180deg, #fbe6ac 0%, #f6cf7f 42%, #eeab52 78%, #e18b3c 100%); }
+.hero::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(251,232,176,.78) 0%, rgba(251,232,176,.38) 46%, rgba(251,232,176,0) 70%); pointer-events:none; }
+.netz { position:absolute; inset:0; width:100%; height:100%; animation:drift 40s ease-in-out infinite alternate; }
+.netz .linien line { stroke:#fff; stroke-opacity:.6; stroke-width:1.1; }
+.netz .knoten circle { fill:#fff; fill-opacity:.95; filter:drop-shadow(0 0 5px rgba(255,255,255,.95)); }
+.netz .masten g { stroke:#2a2f3b; stroke-opacity:.5; }
+.netz .masten .sig { fill:#c62828; stroke:none; animation:puls 2.8s ease-in-out infinite; }
+.netz .tw { animation:funkeln 5s ease-in-out infinite; }
+.netz .t1 { animation-delay:-1s; animation-duration:6s; } .netz .t2 { animation-delay:-2.3s; } .netz .t3 { animation-delay:-3.1s; animation-duration:7s; } .netz .t4 { animation-delay:-4s; }
+@keyframes drift { from { transform:translate3d(-10px,0,0) scale(1.02); } to { transform:translate3d(10px,-6px,0) scale(1.02); } }
+@keyframes funkeln { 0%,100% { opacity:1; } 50% { opacity:.25; } }
+@keyframes puls { 0%,100% { opacity:1; } 50% { opacity:.3; } }
+.hero .wrap { position:relative; z-index:2; padding-top:90px; padding-bottom:70px; width:100%; }
+.vorspann { display:inline-block; font-size:12.5px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:var(--gold-d); border-top:2px solid var(--rot); padding-top:10px; margin-bottom:18px; }
+h1 { margin:0 0 16px; font-weight:800; letter-spacing:-.5px; line-height:1.08; font-size:clamp(20px,5.1vw,56px); white-space:nowrap; color:var(--nacht); }
+h1 span { color:var(--rot); }
+.lead { max-width:31em; font-size:clamp(16px,1.7vw,19px); color:#2d3647; margin:0 0 28px; }
+.knoepfe { display:flex; gap:14px; flex-wrap:wrap; }
+.knopf { display:inline-block; padding:12px 24px; border-radius:6px; font-weight:600; font-size:15px; text-decoration:none; letter-spacing:.2px; transition:background .2s,color .2s,border-color .2s; }
+.knopf.voll { background:var(--nacht); color:#fff; border:2px solid var(--nacht); }
+.knopf.voll:hover { background:var(--rot); border-color:var(--rot); }
+.knopf.leer { color:var(--nacht); border:2px solid var(--nacht); }
+.knopf.leer:hover { background:var(--nacht); color:#fff; }
+
+/* Abschnitte */
+section { padding:72px 0; }
+.kennzeile { font-size:12.5px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:var(--gold-d); margin:0 0 8px; }
+h2 { margin:0 0 12px; font-size:clamp(26px,3.2vw,36px); letter-spacing:-.3px; color:var(--nacht); }
+.unter { margin:0 0 36px; max-width:42em; color:var(--leise); font-size:17px; }
+.karten { display:grid; grid-template-columns:repeat(2,1fr); gap:28px; }
+.karte { background:var(--weiss); border:1px solid var(--linie); border-top:4px solid var(--gold); border-radius:8px; padding:30px 32px; box-shadow:0 1px 2px rgba(27,36,51,.04); transition:box-shadow .25s, transform .25s; }
+.karte:hover { box-shadow:0 14px 30px rgba(27,36,51,.09); transform:translateY(-3px); }
+.karte.rot { border-top-color:var(--rot); }
+.karte h3 { margin:0 0 8px; font-size:22px; color:var(--nacht); }
+.karte p { margin:0 0 18px; color:var(--leise); }
+.stufen { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.stufen .e { font-size:13px; font-weight:700; letter-spacing:.6px; padding:5px 12px; border-radius:4px; background:var(--nacht); color:#fff; }
+.stufen .e.o { background:#fff; color:var(--nacht); border:1px solid var(--nacht); }
+.stufen .pf { color:var(--gold-d); font-weight:700; }
+.vorhaben { background:var(--nacht); color:#e9edf5; position:relative; overflow:hidden; }
+.vorhaben::before { content:""; position:absolute; right:-120px; top:-120px; width:420px; height:420px; border-radius:50%; background:radial-gradient(closest-side, rgba(232,165,38,.35), rgba(232,165,38,0)); }
+.vorhaben .wrap { position:relative; }
+.vorhaben h2 { color:#fff; }
+.vorhaben .kennzeile { color:var(--gold); }
+.vorhaben p { max-width:40em; color:#c9d1e0; font-size:17px; }
+.liste { list-style:none; padding:0; margin:26px 0 0; display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+.liste li { border-top:2px solid var(--gold); padding-top:12px; }
+.liste b { display:block; color:#fff; font-size:17px; margin-bottom:2px; }
+.liste span { color:#aeb8cc; font-size:15px; }
+footer { background:#141b27; color:#9aa5b8; font-size:14px; padding:26px 0; }
+footer .wrap { display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px 24px; }
+footer a { color:#d8deea; text-decoration:none; margin-left:18px; } footer a:hover { color:#fff; text-decoration:underline; }
+footer .wrap > span:last-child a:first-child { margin-left:0; }
+
+/* Rechtsseiten */
+.seite .kopf { position:static; background:var(--weiss); border-bottom:3px solid var(--gold); }
+.inhalt { padding:46px 0 70px; max-width:780px; }
+.inhalt h1 { white-space:normal; font-size:clamp(28px,4vw,38px); margin-bottom:22px; }
+.inhalt h2 { font-size:18px; margin:28px 0 6px; color:var(--rot); letter-spacing:0; }
+.inhalt p { margin:6px 0; }
+.inhalt .klein { color:var(--leise); font-size:14.5px; }
+.inhalt .box { background:var(--weiss); border:1px solid var(--linie); border-radius:8px; padding:12px 28px 24px; }
+
+@media (max-width:860px) {
+  .karten { grid-template-columns:1fr; } .liste { grid-template-columns:1fr; }
+  .kopf nav { display:none; } .hero .wrap { padding-top:96px; } section { padding:52px 0; }
+  .hero::after { background:linear-gradient(180deg, rgba(251,232,176,.7), rgba(251,232,176,.15)); }
+}
+/* Datenfluss: kurze Lichtimpulse wandern über einzelne Linien (nicht durch den Text), am Zielknoten leuchtet ein Ring dezent auf */
+.netz .fluss line { fill:none; stroke-linecap:round; stroke-dasharray:9 4000; opacity:0; animation:fluss var(--d,8s) linear var(--v,0s) infinite; }
+.netz .fluss .glut { stroke:#fff1c2; stroke-opacity:.42; stroke-width:4.4; }
+.netz .fluss .kern { stroke:#fff; stroke-opacity:.98; stroke-width:1.8; }
+.netz .fluss .halo { fill:rgba(255,246,214,.38); stroke:#fff; stroke-width:1.2; vector-effect:non-scaling-stroke; opacity:0; transform-box:fill-box; transform-origin:center; animation:halo var(--d,8s) ease-out var(--v,0s) infinite; }
+.netz .aus { display:none; }
+/* Funkmasten: das rote Licht blitzt, wenn ein Impuls vorbeiläuft, danach laufen zwei Funkwellen um die Spitze */
+.netz .masten .sig { animation:none; opacity:.72; }
+.netz .funk circle { transform-box:fill-box; transform-origin:center; opacity:0; }
+.netz .funk .sigblitz { fill:rgba(255,64,52,.6); filter:blur(1.4px); animation:sigblitz var(--d,8s) ease-out var(--w,0s) infinite; }
+.netz .funk .welle { fill:none; stroke:rgba(255,96,84,.8); stroke-width:1.4; vector-effect:non-scaling-stroke; animation:welle var(--d,8s) ease-out calc(var(--w,0s) + .3s) infinite; }
+.netz .funk .w2 { animation-delay:calc(var(--w,0s) + .95s); }
+@keyframes fluss { 0% { stroke-dashoffset:9; opacity:0; } 3% { opacity:1; } 36% { stroke-dashoffset:calc(-1px * var(--l,100)); opacity:1; } 38% { stroke-dashoffset:calc(-1px * var(--l,100)); opacity:0; } 100% { stroke-dashoffset:calc(-1px * var(--l,100)); opacity:0; } }
+@keyframes halo { 0%,34% { opacity:0; transform:scale(1); } 38% { opacity:.95; transform:scale(1.6); } 54% { opacity:0; transform:scale(4.4); } 100% { opacity:0; transform:scale(4.4); } }
+@keyframes sigblitz { 0% { opacity:0; transform:scale(.6); } 2% { opacity:1; transform:scale(1.9); } 9% { opacity:0; transform:scale(2.8); } 100% { opacity:0; transform:scale(2.8); } }
+@keyframes welle { 0% { opacity:.9; transform:scale(1); } 22% { opacity:0; transform:scale(9); } 100% { opacity:0; transform:scale(9); } }
+@media (max-width:700px) { .netz .fluss > :nth-child(n+25) { display:none; } }
+@media (prefers-reduced-motion:reduce) { .netz .fluss, .netz .funk { display:none; } .netz .masten .sig { opacity:1; } }
+@media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none !important; transition:none !important; } html { scroll-behavior:auto; } }
